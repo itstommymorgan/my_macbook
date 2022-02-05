@@ -1,0 +1,35 @@
+---
+# Configure the Dock
+
+# I do NOT like the dock very much I guess
+dockitems_remove:
+  - Launchpad
+  - Safari
+  - Mail
+  - Maps
+  - Photos
+  - FaceTime
+  - Calendar
+  - Contacts
+  - Reminders
+  - Notes
+  - TV
+  - Music
+  - Podcasts
+  - News
+  - 'App Store'
+  - 'System Preferences'
+
+# Or maybe I just don't like any default apps
+dockitems_persist: 
+  - name: 'Google Chrome'
+    path: '/Applications/Google Chrome.app'
+  - name: Alacritty
+    path: /Applications/Alacritty.app
+  - name: Obsidian
+    path: /Applications/Obsidian.app
+  - name: Notion
+    path: /Applications/Notion.app
+  - name: Slack
+    path: /Applications/Slack.app
+

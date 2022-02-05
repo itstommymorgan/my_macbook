@@ -1,0 +1,10 @@
+---
+
+gem_packages:
+  - name: rubocop
+  - name: rufo
+  - name: solargraph
+
+pip_packages:
+  - name: neovim-remote
+  - name: pynvim

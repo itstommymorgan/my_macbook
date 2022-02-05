@@ -1,0 +1,45 @@
+---
+- name: Bootstrap dev tools
+  hosts: all
+
+  pre_tasks:
+    - import_tasks: tasks/sudoer.yml
+
+  roles:
+    - role: elliotweiser.osx-command-line-tools
+
+  tasks:
+    - name: Detect CPU Type
+      ansible.builtin.command: uname -m
+      register: cpu_type
+
+    - name: Install Rosetta
+      ansible.builtin.command: softwareupdate --install-rosetta --agree-to-license
+      when: cpu_type.stdout.find('arm64') != -1
+
+- name: Install Other Basics
+  hosts: all
+
+  vars_files:
+    - config/dock.yml
+    - config/homebrew.yml
+    - config/mas.yml
+    - config/rbenv.yml
+
+  roles:
+    - role: geerlingguy.mac.homebrew
+    - role: zzet.rbenv
+    - role: geerlingguy.mac.dock
+    - role: geerlingguy.mac.mas
+
+- name: Install Package Manager Dependencies
+  hosts: all
+
+  vars_files:
+    - config/packages.yml
+
+  environment:
+    PATH: ~/.rbenv/shims:{{ ansible_env.PATH }}
+
+  tasks:
+    - import_tasks: tasks/extra-packages.yml

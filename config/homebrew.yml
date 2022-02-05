@@ -1,0 +1,44 @@
+# Homebrew packages
+homebrew_installed_packages:
+  - awscli
+  - bat
+  - curl
+  - ctags
+  - diff-so-fancy
+  - git
+  - git-crypt
+  - gnupg
+  - hub
+  - jq
+  - mosquitto
+  - neovim
+  - nvm
+  - rbenv
+  - ripgrep
+  - shellcheck
+  - the_silver_searcher
+  - tree-sitter
+  - zoxide
+  - zsh
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - 1password
+  - 1password-cli
+  - alacritty
+  - alfred
+  - google-chrome
+  - hammerspoon
+  - keybase
+  - notion
+  - obsidian
+  - signal
+  - slack
+  - spotify
+  - soulver
+  - whatsapp
+  - zoom

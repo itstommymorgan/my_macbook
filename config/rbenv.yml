@@ -1,0 +1,7 @@
+---
+rbenv:
+  env: user
+  version: v1.2.0
+  default_ruby: 2.7.5
+  rubies:
+    - version: 2.7.5
