@@ -1,0 +1,45 @@
+---
+- hosts: all
+
+  vars_prompt:
+    - name: hostname
+      prompt: What should the hostname be for this machine?
+      private: no
+
+    - name: github_token
+      prompt: 'Enter the GitHub Access Token for uploading an SSH key:'
+      private: yes
+
+  tasks:
+    - name: Set the hostname of the machine
+      ansible.builtin.hostname:
+        name: '{{ hostname }}'
+
+    - name: Generate an OpenSSH keypair for github on this machine
+      community.crypto.openssh_keypair:
+        path: ~/.ssh/id_ecdsa
+        type: ecdsa
+
+    - name: Read SSH public key to authorize
+      ansible.builtin.shell: cat ~/.ssh/id_ecdsa.pub
+      register: ssh_pub_key
+
+    - name: Authorize key with GitHub
+      local_action:
+        module: github_key
+        name: 'Access Key for {{ hostname }}'
+        token: '{{ github_token }}'
+        pubkey: '{{ ssh_pub_key.stdout }}'
+
+    - name: "Read GitHub's public key"
+      ansible.builtin.command: ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts
+
+    - name: Read/Write Checkout for main playbook
+      ansible.builtin.git:
+        repo: git@github.com:wellbredgrapefruit/my_macbook.git
+        dest: ~/projects/wellbredgrapefruit/my_macbook
+
+    - name: Install Ansible Galaxy dependencies
+      ansible.builtin.command: ansible-galaxy install -r requirements.yml
+      args:
+        chdir: ~/projects/wellbredgrapefruit/my_macbook
