@@ -2,6 +2,9 @@
 - name: Bootstrap dev tools
   hosts: all
 
+  vars_files:
+    - config/local.yml
+
   pre_tasks:
     - import_tasks: tasks/sudoer.yml
 
@@ -9,6 +12,14 @@
     - role: elliotweiser.osx-command-line-tools
 
   tasks:
+    - name: Register current hostname
+      ansible.builtin.shell: hostname
+      register: current_hostname
+    - name: Set Hostname
+      ansible.builtin.hostname:
+        name: {{ locals.hostname }}
+      when: current_hostname.stdout != locals.hostname
+
     - name: Detect CPU Type
       ansible.builtin.command: uname -m
       register: cpu_type
@@ -16,6 +27,10 @@
     - name: Install Rosetta
       ansible.builtin.command: softwareupdate --install-rosetta --agree-to-license
       when: cpu_type.stdout.find('arm64') != -1
+
+    - name: Create company projects folder
+      ansible.builtin.command: mkdir -p ~/projects/{{ locals.company_name }}
+      when: locals.company_name != ""
 
 - name: Install Other Basics
   hosts: all
