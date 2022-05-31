@@ -6,10 +6,9 @@ Ansible all the things.
 
 Assuming this is a "blank" Macbook that you're starting with:
 
-1. Checkout a read-only copy of this repository in a temp directory.
-1. `xcode-select --install`
-1. `python3 -m ensurepip --upgrade`
-1. `pip install ansible`
-1. `ansible-playbook bootstrap.yml`
+1. [Install 1Password](https://1password.com/downloads/mac/).
+1. Enable the 1Password SSH Agent feature, and copy the specified config settings to ~/.ssh/config.
+1. Run `xcode-select --install`. Go make a sandwich.
+1. Run the [install script](https://gist.github.com/wellbredgrapefruit/cf2707f6172f0ef5a9daa5c8602c12cc): `bash <(curl -s https://gist.githubusercontent.com/wellbredgrapefruit/cf2707f6172f0ef5a9daa5c8602c12cc/raw/9f3902166b7bd6bdc25cb3dfd8e813395d360c52/my_macbook_install.sh)`
 
-The bootstrap playbook prompts for a hostname and a GH token - provided with both it'll do the rest of the setup necessary to run the main playbook, including downloading a read/write copy of the repository.
+The install script will ask you to edit the local config file, to put in information that the main playbook is going to need but that can't necessarily be committed to source control reasonably.
