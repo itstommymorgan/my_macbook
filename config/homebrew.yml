@@ -27,13 +27,12 @@ homebrew_taps:
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
-  - 1password
-  - 1password-cli
   - alacritty
   - alfred
   - google-chrome
   - hammerspoon
   - keybase
+  - marvin
   - notion
   - obsidian
   - signal
