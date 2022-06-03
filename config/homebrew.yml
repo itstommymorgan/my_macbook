@@ -40,6 +40,7 @@ homebrew_cask_apps:
   - font-fira-code-nerd-font
   - google-chrome
   - hammerspoon
+  - karabiner-elements
   - keybase
   - marvin
   - notion
