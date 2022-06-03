@@ -5,11 +5,14 @@ homebrew_installed_packages:
   - curl
   - ctags
   - diff-so-fancy
+  - dockutil
+  - exa
   - git
   - git-crypt
   - gnupg
   - hub
   - jq
+  - loginitems
   - mosquitto
   - neovim
   - nvm
@@ -17,18 +20,24 @@ homebrew_installed_packages:
   - ripgrep
   - shellcheck
   - the_silver_searcher
+  - tmux
+  - tmuxinator
   - tree-sitter
   - zoxide
+  - zplug
   - zsh
 
 homebrew_taps:
   - homebrew/core
   - homebrew/cask
+  - homebrew/cask-fonts
+  - OJFord/formulae
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - alacritty
   - alfred
+  - font-fira-code-nerd-font
   - google-chrome
   - hammerspoon
   - keybase

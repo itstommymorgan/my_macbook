@@ -2,6 +2,7 @@
 roles:
   - name: elliotweiser.osx-command-line-tools
   - name: zzet.rbenv
+  - name: geerlingguy.dotfiles
 
 collections:
   - name: geerlingguy.mac

@@ -1,0 +1,18 @@
+---
+
+dotfiles_repo: git@github.com:wellbredgrapefruit/dotfiles.git
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/projects/wellbredgrapefruit/dotfiles
+dotfiles_repo_version: main
+dotfiles_files:
+  - .config
+  - .hammerspoon
+  - .oh-my-zsh
+  - .tmux
+  - .tmuxinator
+  - .zsh
+  - .gvimrc
+  - .rubocop.yml
+  - .tmux.conf
+  - .zshenv
+  - .zshrc

@@ -4,12 +4,14 @@
 
   vars_files:
     - config/local.yml
+    - config/dotfiles.yml
 
   pre_tasks:
     - import_tasks: tasks/sudoer.yml
 
   roles:
     - role: elliotweiser.osx-command-line-tools
+    - role: geerlingguy.dotfiles
 
   tasks:
     - name: Register current hostname
@@ -17,7 +19,7 @@
       register: current_hostname
     - name: Set Hostname
       ansible.builtin.hostname:
-        name: {{ locals.hostname }}
+        name: "{{ locals.hostname }}"
       when: current_hostname.stdout != locals.hostname
 
     - name: Detect CPU Type
@@ -40,12 +42,16 @@
     - config/homebrew.yml
     - config/mas.yml
     - config/rbenv.yml
+    - config/startup_apps.yml
 
   roles:
     - role: geerlingguy.mac.homebrew
     - role: zzet.rbenv
     - role: geerlingguy.mac.dock
     - role: geerlingguy.mac.mas
+
+  tasks:
+    - import_tasks: tasks/startup_apps.yml
 
 - name: Install Package Manager Dependencies
   hosts: all
@@ -58,3 +64,15 @@
 
   tasks:
     - import_tasks: tasks/extra-packages.yml
+
+- name: Remind about any manual steps that need to be performed
+  hosts: all
+
+  tasks:
+    - name: Register Vimcal path
+      stat:
+        path: /Applications/Vimcal
+      register: vimcal_path
+    - name: Check Vimcal
+      ansible.builtin.command: echo "Install Vimcal - https://www.vimcal.com/downloads/mac-m1"
+      when: vimcal_path.stat.exists
