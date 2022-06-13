@@ -1,8 +1,8 @@
 ---
 
-dotfiles_repo: git@github.com:wellbredgrapefruit/dotfiles.git
+dotfiles_repo: git@github.com:itstommymorgan/dotfiles.git
 dotfiles_repo_accept_hostkey: true
-dotfiles_repo_local_destination: ~/projects/wellbredgrapefruit/dotfiles
+dotfiles_repo_local_destination: ~/projects/itstommymorgan/dotfiles
 dotfiles_repo_version: main
 dotfiles_files:
   - .config
