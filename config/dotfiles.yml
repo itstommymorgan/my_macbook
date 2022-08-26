@@ -5,7 +5,14 @@ dotfiles_repo_accept_hostkey: true
 dotfiles_repo_local_destination: ~/projects/itstommymorgan/dotfiles
 dotfiles_repo_version: main
 dotfiles_files:
-  - .config
+  - .config/alacritty
+  - .config/alacritty.yml
+  - .config/enhance-rails-intellisense-in-solargraph
+  - .config/git
+  - .config/karabiner
+  - .config/nvim
+  - .gnupg/gpg.conf
+  - .gnupg/gpg-agent.conf
   - .hammerspoon
   - .oh-my-zsh
   - .tmux
