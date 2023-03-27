@@ -32,6 +32,7 @@ homebrew_taps:
   - homebrew/cask
   - homebrew/cask-fonts
   - OJFord/formulae
+  - wez/wezterm
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -49,5 +50,6 @@ homebrew_cask_apps:
   - slack
   - spotify
   - soulver
+  - wezterm
   - whatsapp
   - zoom
