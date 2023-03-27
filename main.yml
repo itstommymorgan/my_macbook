@@ -4,7 +4,7 @@
 
   vars_files:
     - config/local.yml
-    - config/dotfiles.yml
+    - ~/projects/itstommymorgan/dotfiles/config.yml
 
   pre_tasks:
     - import_tasks: tasks/sudoer.yml
@@ -34,19 +34,46 @@
       ansible.builtin.command: mkdir -p ~/projects/{{ locals.company_name }}
       when: locals.company_name != ""
 
-- name: Install Other Basics
+- name: Homebrew and Ruby
   hosts: all
 
   vars_files:
-    - config/dock.yml
     - config/homebrew.yml
-    - config/mas.yml
     - config/rbenv.yml
-    - config/startup_apps.yml
 
   roles:
     - role: geerlingguy.mac.homebrew
     - role: zzet.rbenv
+
+- name: PGP setup and decryption
+  hosts: all
+
+  tasks:
+    - name: Register public key list
+      ansible.builtin.command: gpg --list-keys
+      register: public_key_list
+    - name: Register private key list
+      ansible.builtin.command: gpg --list-secret-keys
+      register: private_key_list
+    - name: Import public key
+      ansible.builtin.command: op read op://Private/pgp/public | gpg --import
+      when: public_key_list.stdout.find('tommy@tommymorgan.name') == -1
+    - name: Import private key
+      ansible.builtin.command: op read op://Private/pgp/private | gpg --import
+      when: private_key_list.stdout.find('tommy@tommymorgan.name') == -1
+    - name: Decrypt the repository
+      ansible.builtin.command: git-crypt unlock
+
+- name: Mac configuration
+  hosts: all
+
+  vars_files:
+    - config/dock.yml
+    - config/mas.yml
+    - config/startup_apps.yml
+
+  roles:
+    - role: geerlingguy.mac.homebrew
     - role: geerlingguy.mac.dock
     - role: geerlingguy.mac.mas
 
