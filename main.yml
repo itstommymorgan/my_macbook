@@ -68,13 +68,11 @@
   hosts: all
 
   vars_files:
-    - config/dock.yml
     - config/mas.yml
     - config/startup_apps.yml
 
   roles:
     - role: geerlingguy.mac.homebrew
-    - role: geerlingguy.mac.dock
     - role: geerlingguy.mac.mas
 
   tasks:
