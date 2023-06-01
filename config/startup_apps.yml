@@ -1,12 +1,9 @@
 ---
 startup_login_items:
-  - Alfred 4
   - Hammerspoon
   - Karabiner Elements
-  - Lunatask
   - Messages
+  - Raycast
   - Signal
   - Slack
   - Spotify
-  - Vimcal
-  - WhatsApp
