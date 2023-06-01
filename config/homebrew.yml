@@ -46,6 +46,7 @@ homebrew_cask_apps:
   - slack
   - spotify
   - soulver
+  - todoist
   - wezterm
   - whatsapp
   - zoom
