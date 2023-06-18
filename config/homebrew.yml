@@ -38,6 +38,7 @@ homebrew_cask_apps:
   - font-fira-code-nerd-font
   - google-chrome
   - hammerspoon
+  - hiddenbar
   - karabiner-elements
   - keybase
   - obsidian
