@@ -2,6 +2,6 @@
 rbenv:
   env: user
   version: v1.2.0
-  default_ruby: 3.1.2
+  default_ruby: 3.1.4
   rubies:
-    - version: 3.1.2
+    - version: 3.1.4
