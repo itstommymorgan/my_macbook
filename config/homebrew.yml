@@ -15,7 +15,9 @@ homebrew_installed_packages:
   - mosquitto
   - neovim
   - nvm
+  - postgresql@14
   - rbenv
+  - redis
   - ripgrep
   - shellcheck
   - the_silver_searcher
